@@ -7,15 +7,40 @@ const app = express();
 const path = 'path';
 const PORT = process.env.PORT || 3306;
 
-const pool = mysql.createPool({
-  host: 'myql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com',
-  user: 'myqldbneoboard',
+const connection = mysql.createConnection({
+  host:
+    'mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com' /* myql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com |||| 172.31.29.90*/,
+  user: '',
   password: '20Ne0b0ard20',
   port: 3306,
   database: 'Neoboard',
+  queueLimit: 0, // unlimited queueing
+  connectionLimit: 0, // unlimited connections
+  /* 3813 */
 });
 
-pool.getConnection(function (err, conn) {
+connection.connect(function (err) {
+  if (err) {
+    console.error('Database connection failed: ' + err.stack);
+    return;
+  }
+
+  console.log('Connected to database.');
+});
+
+connection.end(function (err) {
+  if (err) {
+    return console.log('error:' + err.message);
+  }
+  console.log('Close the database connection.');
+});
+
+/* pool.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
+  if (err) throw err;
+  console.log(`The solution is: ${rows[0].solution}`);
+}); */
+
+/* pool.getConnection(function (err, conn) {
   if (err) return res.send(400);
 
   // if you got a connection...
@@ -34,7 +59,7 @@ pool.getConnection(function (err, conn) {
     // CLOSE THE CONNECTION
     conn.release();
   });
-});
+}); */
 
 /* connection.connect((err) => {
   if (err) throw err;
