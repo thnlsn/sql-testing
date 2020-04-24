@@ -10,12 +10,11 @@ const PORT = process.env.PORT || 3306;
 const connection = mysql.createConnection({
   host:
     'mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com' /* myql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com |||| 172.31.29.90*/,
-  user: '',
+  user: 'myqldbneoboard',
   password: '20Ne0b0ard20',
-  port: 3306,
+  port: '3306',
   database: 'Neoboard',
-  queueLimit: 0, // unlimited queueing
-  connectionLimit: 0, // unlimited connections
+  timeout: '60000',
   /* 3813 */
 });
 
