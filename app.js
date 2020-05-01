@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
     'mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com' /* myql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com |||| 172.31.29.90*/,
   user: 'myqldbneoboard',
   password: '20Ne0b0ard20',
-  port: '3306',
+
   database: 'Neoboard',
   /* 3813 */
 });
@@ -85,3 +85,11 @@ connection.end(function (err) {
     res.locals.connection.connect();
     next();
   }); */
+
+//This is the real deal
+/*   host:
+  'mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com',
+user: 'myqldbneoboard',
+password: '20Ne0b0ard20',
+port: '3306',
+database: 'Neoboard', */
