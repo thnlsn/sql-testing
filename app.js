@@ -12,26 +12,33 @@ const connection = mysql.createConnection({
     'mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com' /* myql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com |||| 172.31.29.90*/,
   user: 'myqldbneoboard',
   password: '20Ne0b0ard20',
-
+  port: '3306',
   database: 'Neoboard',
   /* 3813 */
 });
 
-connection.connect(function (err) {
+/* connection.connect(function (err) {
   if (err) {
     console.error('Database connection failed: ' + err.stack);
     return;
   }
-
   console.log('Connected to database.');
+}); */
+
+connection.connect(function (err) {
+  if (err) throw err;
+  connection.query('SELECT * FROM users', function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
+  });
 });
 
-connection.end(function (err) {
+/* connection.end(function (err) {
   if (err) {
     return console.log('error:' + err.message);
   }
   console.log('Close the database connection.');
-});
+}); */
 
 /* pool.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
   if (err) throw err;
