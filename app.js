@@ -3,22 +3,22 @@ console.log('hello');
 const mysql = require('mysql');
 const express = require('express');
 
+const dbConfig = require('./config/db.config');
+
 const app = express();
 const path = 'path';
 const PORT = process.env.PORT || 3306;
 
 const connection = mysql.createConnection({
-  host:
-    'mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com' /* myql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com |||| 172.31.29.90*/,
-  user: 'myqldbneoboard',
-  password: '20Ne0b0ard20',
-  port: '3306',
-  database: 'Neoboard',
-  /* 3813 */
+  host: dbConfig.HOST,
+  user: dbConfig.USER,
+  password: dbConfig.PASSWORD,
+  database: dbConfig.DB,
 });
 
-require('./routes/apiRoutes')(app);
-require('./routes/htmlRoutes')(app);
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome to Neoboard.' });
+});
 
 app.listen(PORT, function () {
   console.log(
