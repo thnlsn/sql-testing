@@ -17,13 +17,18 @@ const connection = mysql.createConnection({
   /* 3813 */
 });
 
-/* connection.connect(function (err) {
-  if (err) {
-    console.error('Database connection failed: ' + err.stack);
-    return;
-  }
-  console.log('Connected to database.');
-}); */
+require('./routes/apiRoutes')(app);
+require('./routes/htmlRoutes')(app);
+
+app.listen(PORT, function () {
+  console.log(
+    `==> 🌎  Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`,
+    PORT,
+    PORT
+  );
+});
+
+/*
 
 connection.connect(function (err) {
   if (err) throw err;
@@ -31,7 +36,17 @@ connection.connect(function (err) {
     if (err) throw err;
     console.log(result);
   });
-});
+}); 
+
+*/
+
+/* connection.connect(function (err) {
+  if (err) {
+    console.error('Database connection failed: ' + err.stack);
+    return;
+  }
+  console.log('Connected to database.');
+}); */
 
 /* connection.end(function (err) {
   if (err) {
@@ -79,7 +94,43 @@ connection.connect(function (err) {
   );
 }); */
 
-/* "mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p" */
+/* 
+
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+mysql -h mysql-db-neoboard.ccauxyrnch3q.us-west-2.rds.amazonaws.com -P 3306 -u myqldbneoboard -p
+
+*/
 
 //Database connection
 /* app.use(function (req, res, next) {
