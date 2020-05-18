@@ -16,6 +16,8 @@ const connection = mysql.createConnection({
   database: dbConfig.DB,
 });
 
+app.get('/', (req, res) => {});
+
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to Neoboard.' });
 });
