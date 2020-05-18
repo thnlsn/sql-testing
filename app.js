@@ -16,7 +16,31 @@ const connection = mysql.createConnection({
   database: dbConfig.DB,
 });
 
-app.get('/', (req, res) => {});
+connection.connect((err) => {
+  if (err) {
+    throw err;
+  }
+  console.log('MySQL Connected...');
+});
+
+/* app.get('/createpostabletable', (req, res) => {
+  let sql =
+    'CREATE TABLE test(id int AUTO_INCREMENT, image VARCHAR(255), name VARCHAR(255), username VARCHAR(255), joinDate VARCHAR(255), college VARCHAR(255), major VARCHAR(255), city VARCHAR(255), PRIMARY KEY(id))';
+  connection.query(sql, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    res.send('Posts table created');
+  });
+}); */
+
+app.get('/createpostabletable', (req, res) => {
+  let sql = 'SHOW TABLES;';
+  connection.query(sql, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    res.send('Posts table created');
+  });
+});
 
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to Neoboard.' });
