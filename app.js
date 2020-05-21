@@ -33,12 +33,39 @@ connection.connect((err) => {
   });
 }); */
 
-app.get('/createpostabletable', (req, res) => {
+app.get('/addpost1', (req, res) => {
+  let post = {
+    image: 'data/images/warner.jpg',
+    name: 'Arthur Fleck',
+    username: 'TheJoker123',
+    joinDate: 'February 129st, 1972',
+    college: 'Gotham City College',
+    major: 'Theatre',
+    city: 'Gotham, NY',
+  };
+  let sql = 'INSERT INTO test SET ?;';
+  let query = connection.query(sql, post, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    res.send('post 1 added');
+  });
+});
+
+app.get('/testposts', (req, res) => {
+  let sql = 'SELECT * FROM users;';
+  connection.query(sql, (err, results) => {
+    if (err) throw err;
+    console.log(results);
+    res.send('posts from test fetched');
+  });
+});
+
+app.get('/showtables', (req, res) => {
   let sql = 'SHOW TABLES;';
   connection.query(sql, (err, result) => {
     if (err) throw err;
     console.log(result);
-    res.send('Posts table created');
+    res.send('res');
   });
 });
 
